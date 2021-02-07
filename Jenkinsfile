@@ -12,7 +12,7 @@ pipeline
 				withCredentials([string(credentialsId: 'sec', variable: 'secr')]) { //set SECRET with the credential content
         			echo "My secret text is '${secr}'"
 				//sh 'terraform init'
-				sh 'terraform destroy -auto-approve -var "acc=$access" -var "sec=$secr"'
+				sh 'terraform apply -auto-approve -var "acc=$access" -var "sec=$secr"'
 			}
     		}
 		}
