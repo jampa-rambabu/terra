@@ -5,5 +5,6 @@ node {
         echo "My secret text is '${secr}'"
 	sh 'terraform init'
 	sh 'terraform apply -auto-approve -var "acc=$access" -var "sec=$secr"'
+	}
     }
 }
