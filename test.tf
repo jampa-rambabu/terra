@@ -15,25 +15,25 @@ provider "aws" {
 }
 
 # Create a VPC
-resource "aws_key_pair" "ubuntu" {
-  key_name   = "ubuntu"
+resource "aws_key_pair" "vib_aws" {
+  key_name   = "vib_aws"
   public_key = file(var.key_p)
 }
 output "AWS_Link" {
   //value = concat([aws_instance.ubuntu.public_dns,""],[":8080/spring-mvc-example",""])
-  value=format("Access the AWS hosted app from here: %s%s", aws_instance.ubuntu.public_dns, ":8080/spring-mvc-example")
+  value=format("Access the AWS hosted app from here: %s%s", aws_instance.vib_aws.public_dns, ":8080/spring-mvc-example")
 }
-resource "aws_instance" "ubuntu" {
-  key_name      = aws_key_pair.ubuntu.key_name
+resource "aws_instance" "vib_aws" {
+  key_name      = aws_key_pair.vib_aws.key_name
   ami           = "ami-0a0ad6b70e61be944"
   instance_type = "t2.micro"
 
   tags = {
-    Name = "ubuntu"
+    Name = "vib_aws"
   }
 
   /*vpc_security_group_ids = [
-    aws_security_group.ubuntu.id
+    aws_security_group.vib_aws.id
   ]*/
 
   connection {
