@@ -14,7 +14,7 @@ pipeline
 					withCredentials([file(credentialsId: 'kp', variable: 'k_p')]) {
 						withCredentials([file(credentialsId: 'kp2', variable: 'k_p2')]) {
 				//sh 'terraform init'
-				sh 'terraform destroy -auto-approve -var "acc=$access" -var "sec=$secr" -var "key_p=$k_p" -var "key_p2=$k_p2"'
+				sh 'terraform apply -auto-approve -var "acc=$access" -var "sec=$secr" -var "key_p=$k_p" -var "key_p2=$k_p2"'
 			}
     		}
 				}
