@@ -8,9 +8,9 @@ pipeline
 		steps
 		    {
     			withCredentials([string(credentialsId: 'acc', variable: 'access')]) { //set SECRET with the credential content
-        		echo "My secret text is '${access}'"
+        		//echo "My secret text is '${access}'"
 				withCredentials([string(credentialsId: 'sec', variable: 'secr')]) { //set SECRET with the credential content
-        			echo "My secret text is '${secr}'"
+        			//echo "My secret text is '${secr}'"
 					withCredentials([file(credentialsId: 'kp', variable: 'k_p')]) {
 						withCredentials([file(credentialsId: 'kp2', variable: 'k_p2')]) {
 				sh 'terraform init -no-color'
